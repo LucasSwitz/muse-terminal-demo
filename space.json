@@ -1,0 +1,8 @@
+{
+  "runtime": "typescript",
+  "platformVersion": 20,
+  "entry": "client/dist/index.html",
+  "name": "Terminal",
+  "slug": "terminal",
+  "managedCronJobs": []
+}

@@ -1,0 +1,11 @@
+node_modules/
+dist/
+dist-cvm/
+*.db
+*.db-journal
+.env
+.env.*
+.bun-cache/
+*.tsbuildinfo
+.space-build/
+.DS_Store

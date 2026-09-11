@@ -1,0 +1,199 @@
+@import "tailwindcss";
+@import "tailwindcss-safe-area";
+
+@theme {
+  --text-xs: 12px;
+  --text-xs--line-height: 16px;
+  --text-sm: 14px;
+  --text-sm--line-height: 20px;
+  --text-base: 16px;
+  --text-base--line-height: 24px;
+}
+
+:root {
+  color-scheme: dark;
+  --bg: #090b0c;
+  --surface: #141719;
+  --text: #dce5e1;
+  --dim: #8f9a96;
+  --border: #242a2c;
+  --accent: #7ce3a1;
+  --warning: #f6c85f;
+  --radius: 8px;
+  --space-surface: var(--surface);
+  --space-surface-alt: var(--bg);
+  --space-muted: var(--dim);
+  --space-border: var(--border);
+  --space-accent: var(--accent);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+[data-generated-space-root],
+.hatch-space-root[data-hatch-space-root] {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+body {
+  color: var(--text);
+  font-family: "Berkeley Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font: inherit;
+}
+
+.terminal-app {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  width: 100%;
+  height: 100%;
+  min-height: 100dvh;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.terminal-toolbar {
+  z-index: 2;
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-right: 12px;
+  padding-bottom: 7px;
+  padding-left: 14px;
+  border-bottom: 1px solid var(--border);
+  background: #0d1011;
+  user-select: none;
+}
+
+.connection {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 7px;
+  color: var(--dim);
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: lowercase;
+  white-space: nowrap;
+}
+
+.connection-dot {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: #59615e;
+}
+
+.connection-dot.connected {
+  background: var(--accent);
+  box-shadow: 0 0 0 3px rgb(124 227 161 / 9%);
+}
+
+.connection-dot.connecting {
+  background: var(--warning);
+  animation: breathe 1.35s ease-in-out infinite;
+}
+
+.connection-dot.offline {
+  background: #f27d7d;
+}
+
+.command {
+  overflow: hidden;
+  color: #68716e;
+  text-overflow: ellipsis;
+}
+
+.terminal-stage {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.terminal-mount {
+  position: absolute;
+  inset: 11px 10px 8px 12px;
+  overflow: hidden;
+}
+
+.terminal-mount .xterm {
+  height: 100%;
+}
+
+.terminal-mount .xterm-viewport {
+  scrollbar-color: #343b38 transparent;
+  scrollbar-width: thin;
+}
+
+.terminal-mount .xterm-viewport::-webkit-scrollbar {
+  width: 5px;
+}
+
+.terminal-mount .xterm-viewport::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: #343b38;
+}
+
+.terminal-mount .xterm-helper-textarea {
+  opacity: 0.01 !important;
+}
+
+.terminal-mount .xterm-helper-textarea:focus {
+  outline: none;
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 720px) {
+  .terminal-toolbar {
+    min-height: 48px;
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .terminal-mount {
+    inset: 15px 18px 12px;
+  }
+
+  .connection {
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .connection-dot.connecting {
+    animation: none;
+  }
+}
+
+.inline-terminal-editor {
+  position: absolute; z-index: 5; margin: 0; padding: 0; border: 0;
+  border-radius: 0; outline: none; background: #090b0c; color: #dce5e1;
+  caret-color: #7ce3a1; line-height: 1.25; font-weight: 400;
+}
+.inline-terminal-editor[hidden] { display: none; }
